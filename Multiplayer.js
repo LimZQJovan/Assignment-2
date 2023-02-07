@@ -16,6 +16,7 @@ var winningPattern = [
 ];
 //Player 'X' plays first
 var xTurn = true;
+document. getElementById("px"). style. display = "flex";
 var count = 0;
 //Disable All Buttons
 const disableButtons = () => {
@@ -118,11 +119,15 @@ btnRef.forEach((element) => {
       if (answer == true) {
         if (xTurn) {
           xTurn = false;
+          document. getElementById("px"). style. display = "none";
+          document. getElementById("po"). style. display = "flex";
           //Display X
           element.innerText = "X";
           element.disabled = true;
         } else {
           xTurn = true;
+          document. getElementById("px"). style. display = "flex";
+          document. getElementById("po"). style. display = "none";
           //Display O
           element.innerText = "O";
           element.disabled = true;

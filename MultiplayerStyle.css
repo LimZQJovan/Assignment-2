@@ -24,6 +24,10 @@
     flex-wrap: wrap;
     gap: 2vmin;
   }
+  #px,#po {
+    display: none;
+    font-size: 2vh;
+  }
   .button-option {
     background: #ffffff;
     height: 22vmin;
@@ -74,3 +78,4 @@
   .popup.hide {
     display: none;
   }
+ 
