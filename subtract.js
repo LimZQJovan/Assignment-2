@@ -1,108 +1,140 @@
-const option1 = document.getElementById("option1"),
-      option2 = document.getElementById("option2"),
-      option3 = document.getElementById("option3"),
-      option4= document.getElementById("option4"),   
-      wrong = document.getElementById("wrong"),
-      correct = document.getElementById("correct"),
+const question = document.querySelector('#question');
+      choices = Array.from(document.querySelectorAll('.choice-text')),
+      progressText = document.querySelector('#progressText'),
       scoreText = document.querySelector('#score'),
-      POINTS = 100;
-var answer = 0;
-
-function generate_equation(){ 
-  var num1 = Math.floor(Math.random() * 12),
-      num2 = Math.floor(Math.random() * 15),
-      dummyAnswer1 = Math.floor(Math.random() * 2) + 10,
-      dummyAnswer2 = Math.floor(Math.random() * 2) + 8,
-      dummyAnswer3 = Math.floor(Math.random() * 2) + 5,
-      allAnswers = [],
-      switchAnswers = [];
-
-    if( num1 >= num2){
-        answer = eval(num1 - num2);
-        document.getElementById("question").innerHTML = `What is ${num1} - ${num2}?`;
-    }
-    else{
-        answer = eval(num2 - num1);
-        document.getElementById("question").innerHTML = `What is ${num2} - ${num1}?`; 
-    }
-  
-  allAnswers = [answer, dummyAnswer1, dummyAnswer2,dummyAnswer3];
-
-  for (i = allAnswers.length; i--;){
-    switchAnswers.push(allAnswers.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
-  };
-
-  option1.innerHTML = switchAnswers[0];
-  option2.innerHTML = switchAnswers[1];
-  option3.innerHTML = switchAnswers[2];
-  option4.innerHTML = switchAnswers[3];
-};
+      wrong = document.getElementById("wrong"),
+      correct = document.getElementById("correct");
+      
 
 
+let currentQuestion = {}
+let score=0
+let questionCounter = 0
+let availableQuestions = []
 
-option1.addEventListener("click", function(){
-    if(option1.innerHTML == answer){
-      incrementScore(POINTS);
-      questionIncrement();
-      correct.play();
-      generate_equation();
-    }
-    else{
-        wrong.play();
-    }
-});
+let questions = []
+const generateQuestion = () => {
+    let question = ''
+    let choice1 = ''
+    let choice2 = ''
+    let choice3 = ''
+    let choice4 = ''
+    let answer = 0
 
-option2.addEventListener("click", function(){
-    if(option2.innerHTML == answer){
-      incrementScore(POINTS);
-      questionIncrement();
-      correct.play();
-      generate_equation();
+    // Generate a random math expression with addition, subtraction, multiplication, or division
+    let num1 = Math.floor(Math.random() * 15)
+    let num2 = Math.floor(Math.random() * 15) + 1 // Ensure num2 is not zero
+    let operator = '-'  
+    
+    if(num1>=num2){
+      var correctAnswer = eval(`${num1} ${operator} ${num2}`)
+      question = `What is ${num1} ${operator} ${num2}?`
+    }else {
+      var correctAnswer = eval(`${num2} ${operator} ${num1}`)
+      question = `What is ${num2} ${operator} ${num1}?`
     }
-    else{
-        wrong.play();
-    }
-});
 
-option3.addEventListener("click", function(){
-    if(option3.innerHTML == answer){
-      incrementScore(POINTS);
-      questionIncrement();
-      correct.play();
-      generate_equation();
+    // Generate choices for the math expression
+    answer = Math.floor(Math.random() * 4) + 1
+    switch (answer) {
+        case 1:
+            choice1 = correctAnswer
+            choice2 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice3 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
+            break
+        case 2:
+            choice2 = correctAnswer
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice3 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
+            break
+        case 3:
+            choice3 = correctAnswer
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice2 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
+            break
+        case 4:
+            choice4 = correctAnswer
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice2 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice3 = correctAnswer + Math.floor(Math.random() * 10) + 1
+            break
     }
-    else{
-        wrong.play();
-    }
-});
-option4.addEventListener("click", function(){
-    if(option4.innerHTML == answer){
-      incrementScore(POINTS);
-      questionIncrement();
-      correct.play();
-      generate_equation();
-    }
-    else{
-        wrong.play();
-    }
-});
 
-startGame = () => { 
-    questionCounter = 1 
-    score = 0
-    progressText.innerHTML = `Question ${questionCounter}`;
+    // Push the generated question and choices into the questions array
+    questions.push({
+        question,
+        choice1,
+        choice2,
+        choice3,
+        choice4,
+        answer,
+    })
 }
+
+
+// Generate and push 15 random questions into the questions array
+for (let i = 0; i < 50; i++) {
+    generateQuestion()
+}
+
+const SCORE_POINTS = 100 
+const MAX_QUESTIONS = 50
+startGame = () => { 
+    questionCounter = 0
+    score = 0
+    availableQuestions = [...questions] 
+    getNewQuestion()
+}
+getNewQuestion = () => {
+
+    questionCounter++
+    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length) 
+    currentQuestion = availableQuestions[questionsIndex] 
+    question.innerText = currentQuestion.question
+    
+    choices.forEach(choice => {
+        const number = choice.dataset ['number']
+        choice.innerText = currentQuestion ['choice' + number]
+    })
+
+    availableQuestions.splice(questionsIndex, 1)
+
+}
+
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        const selectedChoice = e.target
+        const selectedAnswer = selectedChoice.dataset['number']
+
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
+
+        if(classToApply === 'correct') {
+            correct.play();
+            incrementScore(SCORE_POINTS)
+            getNewQuestion()        
+        }
+        else{
+          wrong.play();
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply)
+
+        setTimeout(() => {
+          selectedChoice.parentElement.classList.remove(classToApply)
+      }, 200)
+    })
+})
 
 incrementScore = num => {
-    score += num
-    scoreText.innerHTML = score
+    score +=num
+    scoreText.innerText = score
 }
 
-questionIncrement = () => {
-    questionCounter += 1;
-    progressText.innerHTML = `Question ${questionCounter}`;
-}
-
-generate_equation()
 startGame()
+
 
