@@ -125,9 +125,31 @@ width: 100%;
   background-color: #CFD8DC;
 }
 
-#playbutton{
-  width: 80%;
+.bg-music{
+  position: absolute;
+  top: 98%;
+  left: 97%;
 }
+
+.musicbtn{
+  background-color: transparent;
+  color: #fff;
+  font-size: 50px;
+  border: none;
+  display: block;
+  transition: all linear .25s;
+}
+
+.fa-volume-high {
+  position: absolute;
+  display: none;
+}
+
+.fa-volume-xmark {
+  position: absolute;
+  display: block;
+}
+
 
 @media screen and (max-width: 768px) {
   .choice-container{
