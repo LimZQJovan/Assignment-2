@@ -233,6 +233,23 @@ input::placeholder {
   background-color: #CFD8DC;
 }
 
+/*Back Icon*/
+.back{
+  position: absolute;
+  top: 0%;
+  right: 97%;
+}
+
+.backbtn{
+  background-color: transparent;
+  color: #000000;
+  font-size: 50px;
+  font-weight: 50;
+  border: none;
+  display: block;
+  transition: all linear .25s;
+  cursor: pointer;
+}
 
 /*Music*/
 .bg-music{
