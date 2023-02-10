@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="practicegame.css">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../practice/practicegame.css">
+    <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 <body>    
+
+
     <audio id="wrong">
-        <source src="wrong.mp3" type="audio/mpeg">
+        <source src="../wrong.mp3" type="audio/mpeg">
       </audio>
       <audio id = "correct">
-        <source src="correct.mp3" type="audio/mpeg">
+        <source src="../correct.mp3" type="audio/mpeg">
       </audio>
+      <audio id = "bgmusic" autoplay loop = "">
+        <source src= "../bg.mp3">
+      </audio>
+
+
       <div class="hamburger-menu">
         <input id="menu__toggle" type="checkbox" />
         <label class="menu__btn" for="menu__toggle">
@@ -22,26 +28,24 @@
         </label>
     
         <ul class="menu__box">
-          <li><a class="menu__item" href="index.html">Main Menu</a></li>
-          <li><a class="menu__item" href="practice.html">Practice</a></li>
-          <li><a class="menu__item" href="highscores.html">Highscores</a></li>
+          <li><a class="menu__item" href="../index.html">Main Menu</a></li>
+          <li><a class="menu__item" href="../game/game.html">Play</a></li>
+          <li><a class="menu__item" href="../highscores/highscores.html">Highscores</a></li>
+          <li><a class="menu__item" href="../subtract/subtract.html">Substraction</a></li>
+          <li><a class="menu__item" href="../multiply/multiply.html">Multiplication</a></li>
+          <li><a class="menu__item" href="../divide/divide.html">Division</a></li>
         </ul>
       </div>
 
+
     <div class="container">
         <div id="game" class="justify-center flex-column">
-            <div id="timer">
-                <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_4yofoa5q.json"  background="transparent"  speed="2"  style="width: 100px; height: 100px;"  loop  autoplay></lottie-player></head>
-                <p id="countdown"></p>
-            </div> 
+            
             <div id="hud">
                 <div class="hud-item">
                     <p id="progressText" class="hud-prefix">
                         Question
                     </p>
-                    <div id="progressBar">
-                        <div id="progressBarFull"></div>
-                    </div> 
                 </div>
                 <div class="hud-item">
                     <p class="hud-prefix">
@@ -58,15 +62,15 @@
                 <p class="choice-text" data-number="1">Choice</p>
             </div>
             <div class="choice-container">
-                <p class="choice-prefix">B</p>
+                <p class="choice-prefix" >B</p>
                 <p class="choice-text" data-number="2">Choice</p>
             </div>
             <div class="choice-container">
-                <p class="choice-prefix">C</p>
+                <p class="choice-prefix" >C</p>
                 <p class="choice-text" data-number="3">Choice</p>
             </div>
             <div class="choice-container">
-                <p class="choice-prefix">D</p>
+                <p class="choice-prefix" >D</p>
                 <p class="choice-text" data-number="4">Choice</p>
             </div>
         </div>
@@ -78,8 +82,8 @@
             <i class="fa-solid fa-volume-xmark mute-icon"></i>
           </button>
     </div>
- 
-    <script src="game.js"></script>
-    <script src="script.js"></script>
+
+    <script src="add.js"></script>
+    <script src="../script.js"></script>
 </body>
-</html>rgb(161, 212, 221)
+</html>

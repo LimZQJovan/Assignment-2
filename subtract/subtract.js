@@ -22,13 +22,19 @@ const generateQuestion = () => {
     let answer = 0
 
     // Generate a random math expression with addition, subtraction, multiplication, or division
-    let num1 = Math.floor(Math.random() * 10)
-    let num2 = Math.floor(Math.random() * 10) + 1 // Ensure num2 is not zero
-    let operator = '*'   
-    question = `What is ${num1} times ${num2}?`
+    let num1 = Math.floor(Math.random() * 15)
+    let num2 = Math.floor(Math.random() * 15) + 1 // Ensure num2 is not zero
+    let operator = '-'  
+    
+    if(num1>=num2){
+      var correctAnswer = eval(`${num1} ${operator} ${num2}`)
+      question = `What is ${num1} ${operator} ${num2}?`
+    }else {
+      var correctAnswer = eval(`${num2} ${operator} ${num1}`)
+      question = `What is ${num2} ${operator} ${num1}?`
+    }
 
     // Generate choices for the math expression
-    const correctAnswer = eval(`${num1} ${operator} ${num2}`)
     answer = Math.floor(Math.random() * 4) + 1
     switch (answer) {
         case 1:
@@ -83,7 +89,10 @@ startGame = () => {
     getNewQuestion()
 }
 getNewQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) { 
 
+        return window.location.assign('end-subtract.html')
+    }
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
 
@@ -130,3 +139,5 @@ incrementScore = num => {
 }
 
 startGame()
+
+

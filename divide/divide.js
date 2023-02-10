@@ -11,8 +11,9 @@ let currentQuestion = {}
 let score=0
 let questionCounter = 0
 let availableQuestions = []
-
 let questions = []
+
+
 const generateQuestion = () => {
     let question = ''
     let choice1 = ''
@@ -22,38 +23,47 @@ const generateQuestion = () => {
     let answer = 0
 
     // Generate a random math expression with addition, subtraction, multiplication, or division
-    let num1 = Math.floor(Math.random() * 15)
-    let num2 = Math.floor(Math.random() * 15) + 1 // Ensure num2 is not zero
-    let operator = '+'   
-    question = `What is ${num1} ${operator} ${num2}?`
+    let num1 = Math.floor(Math.random() * 20)
+    let num2 = Math.floor(Math.random() * 20) + 1 // Ensure num2 is not zero
+    let operator = '/'
+    
+
+    // Check if division result is not a whole number and generate a new operator if it is not
+    if (operator === '/' && num1 % num2 !== 0) {
+        return generateQuestion(operator = '/')
+    }
+    else{
+        var correctAnswer = eval(`${num1} ${operator} ${num2}`)
+        question = `What is ${num1} divided by ${num2}?`; 
+    }
+
 
     // Generate choices for the math expression
-    const correctAnswer = eval(`${num1} ${operator} ${num2}`)
     answer = Math.floor(Math.random() * 4) + 1
     switch (answer) {
         case 1:
             choice1 = correctAnswer
-            choice2 = correctAnswer + Math.floor(Math.random() * 10) + 1
-            choice3 = correctAnswer - Math.floor(Math.random() * 10) - 1
-            choice4 = correctAnswer + Math.floor(Math.random() * 15) + 1
+            choice2 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice3 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
             break
         case 2:
             choice2 = correctAnswer
-            choice1 = correctAnswer + Math.floor(Math.random() * 10) + 1
-            choice3 = correctAnswer - Math.floor(Math.random() * 10) - 1
-            choice4 = correctAnswer + Math.floor(Math.random() * 15) + 1
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice3 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
             break
         case 3:
             choice3 = correctAnswer
-            choice1 = correctAnswer + Math.floor(Math.random() * 10) + 1
-            choice2 = correctAnswer - Math.floor(Math.random() * 10) - 1
-            choice4 = correctAnswer + Math.floor(Math.random() * 15) + 1
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice2 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice4 = correctAnswer + Math.floor(Math.random() * 10) + 1
             break
         case 4:
             choice4 = correctAnswer
-            choice1 = correctAnswer + Math.floor(Math.random() * 10) + 1
-            choice2 = correctAnswer - Math.floor(Math.random() * 10) - 1
-            choice3 = correctAnswer + Math.floor(Math.random() * 15) + 1
+            choice1 = correctAnswer + Math.floor(Math.random() * 5) + 1
+            choice2 = correctAnswer - Math.floor(Math.random() * 5) - 1
+            choice3 = correctAnswer + Math.floor(Math.random() * 10) + 1
             break
     }
 
@@ -83,7 +93,10 @@ startGame = () => {
     getNewQuestion()
 }
 getNewQuestion = () => {
+    if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) { 
 
+        return window.location.assign('end-divide.html')
+    }
     questionCounter++
     progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`
 

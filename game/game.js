@@ -180,8 +180,8 @@ let timerId = setInterval(() => {
   // Stop the timer when the time is up
   if (timeLeft === 0) {
     clearInterval(timerId);
-    // localStorage.setItem('mostRecentScore', score)
-    // window.location.assign('end.html')
+    localStorage.setItem('mostRecentScore', score)
+    window.location.assign('end.html')
 
   }
 }, 1000);
