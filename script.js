@@ -7,7 +7,7 @@ const muteButton = document.querySelector('.fa-volume-xmark'),
       bgmusic.volume = 0.4;
       bgmusic.loop = true
 
-      unmuteButton.style.display ='none';
+      muteButton.style.display ='none';
 
 // Music will play once user interact with browser
 window.addEventListener('click', () => {
