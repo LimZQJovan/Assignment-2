@@ -215,7 +215,7 @@ input::placeholder {
   margin: 0;
   padding: 80px 0;
   list-style: none;
-  background-color: rgb(152, 203, 226);
+  background-color: rgb(45, 200, 228);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);
   transition-duration: .25s;
 }
