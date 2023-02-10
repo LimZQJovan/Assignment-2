@@ -6,6 +6,7 @@
     <title>Quiz Page</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="practicegame.css">
+    <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 <body>    
 
     <audio id="wrong">
@@ -13,7 +14,10 @@
       </audio>
       <audio id = "correct">
         <source src="correct.mp3" type="audio/mpeg">
-      </audio>
+      <!-- </audio>
+      <audio id = "bgmusic" autoplay loop = "">
+        <source src= "bg.mp3">
+      </audio> -->
 
       <div class="hamburger-menu">
         <input id="menu__toggle" type="checkbox" />
@@ -68,6 +72,13 @@
                 <p class="choice-text" data-number="4">Choice</p>
             </div>
         </div>
+    </div>
+
+    <div class = 'bg-music'>
+        <button class="musicbtn">
+            <i class="fa-solid fa-volume-high music-icon"></i>
+            <i class="fa-solid fa-volume-xmark mute-icon"></i>
+          </button>
     </div>
     <script src="add.js"></script>
 </body>
