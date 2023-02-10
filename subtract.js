@@ -4,6 +4,8 @@ const question = document.querySelector('#question');
       scoreText = document.querySelector('#score'),
       wrong = document.getElementById("wrong"),
       correct = document.getElementById("correct");
+correct.volume = 0.4; 
+wrong.volume =0.4;
       
 
 
