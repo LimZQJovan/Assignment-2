@@ -4,27 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Home page</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+  <div class = 'back'>      
+    <a href="index.html" class="backbtn">
+      <i class="fa-solid fa-left-long"></i>
+    </a>
+  </div>
+
   <div class="container">
-    <div id="left-animation">
-    <!-- <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_loGwzbI7N3.json"  background="transparent"  speed="1"  style="width: 600px; height: 600px;"  loop  autoplay></lottie-player> -->
-    </div>
     <div id="home" class="flex-column flex-center">
-      <h1>Mathistic</h1>
-      <a href="game/game.html" class="btn">Play</a>
-      <a href="practice/practice.html" id="practice-btn" class="btn">Practice Mode</a>
-      <a href="highscores/highscores.html" id="highscore-btn" class="btn">High Scores</a>
+      <h1>Make your Choice</h1>
+      <a href="add.html" id="add-btn" class="btn">Addition</a>
+      <a href="subtract.html" id="subtract-btn" class="btn">Subtraction</a>
+      <a href="multiply.html" id="multiply-btn" class="btn">Multiplication</a>
+      <a href="divide.html" id="divide-btn" class="btn">Division</a>
     </div>
   </div>
+  
   <div class = 'bg-music'>
     <button class="musicbtn">
         <i class="fa-solid fa-volume-high music-icon"></i>
         <i class="fa-solid fa-volume-xmark mute-icon"></i>
-      </button>
+    </button>
 </div>
+
 <script src="script.js"></script>
 </body>
 </html>

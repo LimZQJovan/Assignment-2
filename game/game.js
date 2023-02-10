@@ -139,9 +139,11 @@ choices.forEach(choice => {
 
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
+            correct.volume = 0.5;
             correct.play();
         }
         else{
+            wrong.volume = 0.5;
             wrong.play();
         }
         
