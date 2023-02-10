@@ -1,4 +1,12 @@
-var bgmusic = new Audio('bg.mp3')
+var bgmusic = new Audio('../bg.mp3');
+
+window.addEventListener("load", function() {
+  var loaderWrapper = document.querySelector(".loader-wrapper");
+  loaderWrapper.style.opacity = 0;
+  setTimeout(function() {
+    loaderWrapper.style.display = "none";
+  }, 1000);
+});
 
 // Music Play/Pause Button Testing  
 const muteButton = document.querySelector('.fa-volume-xmark'),
@@ -18,16 +26,17 @@ window.addEventListener('click', () => {
 muteButton.addEventListener('click', () => {
   muteButton.style.display = 'none';
   unmuteButton.style.display = 'block';
-  bgmusic.muted = true;
-  bgmusic.pause();
+  bgmusic.muted = false;
+  bgmusic.play();
 },200);
 
 unmuteButton.addEventListener('click', () => {
   muteButton.style.display = 'block';
   unmuteButton.style.display = 'none';
-  bgmusic.muted = false;
-  bgmusic.play();
+  bgmusic.muted = true;
+  bgmusic.pause();
 },200);
+
 
 
 

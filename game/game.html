@@ -6,7 +6,7 @@
     <title>Quiz Page</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="game.css">
-    <link rel="stylesheet" href="practicegame.css">
+    <link rel="stylesheet" href="../practice/practicegame.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 <body>    
@@ -21,7 +21,6 @@
         <label class="menu__btn" for="menu__toggle">
           <span></span>
         </label>
-    
         <ul class="menu__box">
           <li><a class="menu__item" href="../index.html">Main Menu</a></li>
           <li><a class="menu__item" href="../practice/practice.html">Practice</a></li>
@@ -73,12 +72,15 @@
         </div>
     </div>
 
-    <div class = '../bg-music'>
+    <div class = 'bg-music'>
         <button class="musicbtn">
             <i class="fa-solid fa-volume-high music-icon"></i>
             <i class="fa-solid fa-volume-xmark mute-icon"></i>
           </button>
     </div>
+    <div class="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+      </div>
     <script src="game.js"></script>
     <script src="../script.js"></script>
 </body>

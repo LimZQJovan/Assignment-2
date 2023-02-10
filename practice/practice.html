@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Home page</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class = 'back'>      
+    <a href="../index.html" class="backbtn">
+      <i class="fa-solid fa-left-long"></i>
+    </a>
+  </div>
   <div class="container">
     <div id="home" class="flex-column flex-center">
       <h1>Make your Choice</h1>
@@ -15,5 +21,15 @@
       <a href="../divide/divide.html" id="divide-btn" class="btn">Division</a>
     </div>
   </div>
+  <div class = 'bg-music'>
+    <button class="musicbtn">
+        <i class="fa-solid fa-volume-high music-icon"></i>
+        <i class="fa-solid fa-volume-xmark mute-icon"></i>
+    </button>
+</div>
+<div class="loader-wrapper">
+  <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<script src="../script.js"></script>
 </body>
 </html>

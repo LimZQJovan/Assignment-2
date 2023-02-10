@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Home page</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> -->
   <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -19,12 +19,22 @@
       <a href="highscores/highscores.html" id="highscore-btn" class="btn">High Scores</a>
     </div>
   </div>
-  <div class = 'bg-music'>
-    <button class="musicbtn">
-        <i class="fa-solid fa-volume-high music-icon"></i>
-        <i class="fa-solid fa-volume-xmark mute-icon"></i>
-      </button>
-</div>
-<script src="script.js"></script>
+  <div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+  </div>
+      <audio id = "homemusic">
+        <source src="bg.mp3" type="audio/mpeg">
+      </audio>
+<script>window.addEventListener("load", function() {
+  var loaderWrapper = document.querySelector(".loader-wrapper");
+  loaderWrapper.style.opacity = 0;
+  setTimeout(function() {
+    loaderWrapper.style.display = "none";
+  }, 1000);
+});
+
+window.addEventListener('click', () => {
+  homemusic.play();
+});</script>
 </body>
 </html>
