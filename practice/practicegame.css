@@ -1,5 +1,5 @@
 body {
-  color: #fff;
+  color: black;
 }
 
 .choice-container {
@@ -7,14 +7,13 @@ body {
   margin-bottom: 0.8rem;
   width: 100%;
   border-radius: 4px;
-  background: rgb(18, 93, 255);
+  background: rgb(255,205,80);
   font-size: 3rem;
   min-width: 80rem;
 }
 
 .choice-container:hover {
   cursor: pointer;
-  box-shadow: 0 0.4rem 1.4rem 0 rgba(6, 103, 247, 0.5);
   transform: scale(1.02);
   transform: transform 100ms;
 }
@@ -27,6 +26,7 @@ color: white;
 .choice-text {
 padding: 2rem;
 width: 100%;
+color: white
 }
 
 .correct {
@@ -51,7 +51,10 @@ width: 100%;
 .hud-main-text {
   text-align: center;
 }
-
+#topic{
+  text-align: center;
+  font-size: 40px;
+}
 
 @media screen and (max-width: 768px) {
   .choice-container{
