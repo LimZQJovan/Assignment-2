@@ -139,7 +139,12 @@ choices.forEach(choice => {
 
         if(classToApply === 'correct') {
             incrementScore(SCORE_POINTS)
+            correct.play();
         }
+        else{
+            wrong.play();
+        }
+        
 
         selectedChoice.parentElement.classList.add(classToApply)
 
@@ -157,7 +162,7 @@ incrementScore = num => {
 let countdown = document.querySelector('#countdown');
 
 // Start the countdown from 60 seconds
-let timeLeft = 31;
+let timeLeft = 30;
 
 // Set the color of the countdown to green
 countdown.style.color = 'green';
@@ -175,6 +180,9 @@ let timerId = setInterval(() => {
   // Stop the timer when the time is up
   if (timeLeft === 0) {
     clearInterval(timerId);
+    // localStorage.setItem('mostRecentScore', score)
+    // window.location.assign('end.html')
+
   }
 }, 1000);
 
