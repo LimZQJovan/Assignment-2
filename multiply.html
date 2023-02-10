@@ -6,6 +6,8 @@
     <title>Quiz Page</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="practicegame.css">
+    <script src="https://kit.fontawesome.com/122871f124.js" crossorigin="anonymous"></script>
+    
 <body>    
 
     <audio id="wrong">
@@ -13,6 +15,9 @@
       </audio>
       <audio id = "correct">
         <source src="correct.mp3" type="audio/mpeg">
+      </audio>
+      <audio id = "bgmusic" autoplay loop = "">
+        <source src= "bg.mp3">
       </audio>
 
       <div class="hamburger-menu">
@@ -26,7 +31,7 @@
           <li><a class="menu__item" href="game.html">Play</a></li>
           <li><a class="menu__item" href="highscores.html">Highscores</a></li>
           <li><a class="menu__item" href="add.html">Addition</a></li>
-          <li><a class="menu__item" href="subtract.html">Substraction</a></li>
+          <li><a class="menu__item" href="subtract.html">Multiplication</a></li>
           <li><a class="menu__item" href="divide.html">Division</a></li>
         </ul>
       </div>
@@ -69,6 +74,15 @@
             </div>
         </div>
     </div>
+
+    <div class = 'bg-music'>
+        <button class="musicbtn">
+            <i class="fa-solid fa-volume-high music-icon"></i>
+            <i class="fa-solid fa-volume-xmark mute-icon"></i>
+          </button>
+    </div>
+
     <script src="multiply.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
